@@ -1,0 +1,26 @@
+{
+  "name": "receitas_3c_back",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node --watch server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/filipiquadros/receitas_3C_back.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/filipiquadros/receitas_3C_back/issues"
+  },
+  "homepage": "https://github.com/filipiquadros/receitas_3C_back#readme",
+  "dependencies": {
+    "fastify": "^5.7.4",
+    "pg": "^8.19.0"
+  }
+}
