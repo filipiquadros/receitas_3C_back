@@ -8,16 +8,19 @@ POST http://localhost:3000/usuarios
 Content-Type: application/json
 
 {
-    "nome": "joao",
+    "nome": "Caio",
     "senha": "12345"
 }
 
 ###
 
-PUT http://localhost:3000/usuarios/2
+PUT http://localhost:3000/usuarios/3
 Content-Type: application/json
 
 {
     "nome": "GamesEdu",
-    "senha": "fire head"
+    "senha": "Olha_que_geometria"
 }
+###
+
+DELETE http://localhost:3000/usuarios/8
