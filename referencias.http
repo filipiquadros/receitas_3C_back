@@ -24,3 +24,14 @@ Content-Type: application/json
 ###
 
 DELETE http://localhost:3000/usuarios/10
+
+###
+
+POST http://localhost:3000/usuarios
+Content-Type: application/json
+
+{
+    "nome": "Marcos",
+    "email": "marcos@example.com",
+    "senha": "12345"
+}
