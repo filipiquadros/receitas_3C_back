@@ -4,16 +4,6 @@ GET http://localhost:3000/usuarios
 
 ###
 
-POST http://localhost:3000/usuarios
-Content-Type: application/json
-
-{
-    "nome": "Caio",
-    "senha": "12345"
-}
-
-###
-
 PUT http://localhost:3000/usuarios/3
 Content-Type: application/json
 
@@ -31,7 +21,16 @@ POST http://localhost:3000/usuarios
 Content-Type: application/json
 
 {
-    "nome": "Marcos",
-    "email": "marcos@example.com",
-    "senha": "12345"
+    "nome": "Kayson Caetano",
+    "email": "kayson@example.com",
+    "senha": "1234"
+}
+###
+
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+    "email": "kayson@example.com",
+    "senha": "1234"
 }

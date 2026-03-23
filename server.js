@@ -1,5 +1,6 @@
 import Fastify  from "fastify";
 import { Pool } from "pg";
+import cors from '@fastify/cors';
 
 const sql = new Pool({
     user: "postgres",
@@ -11,6 +12,8 @@ const sql = new Pool({
 
 const servidor = Fastify()
 
+servidor.register(cors, {
+    origin: '*'})
 servidor.get("/usuarios", async () => {
     const result = await sql.query('SELECT * FROM usuario')
     return result.rows
@@ -48,24 +51,21 @@ servidor.put('/usuarios/:id', async (request, reply) => {
 
 servidor.delete('/usuarios/:id', async (request, reply) => {
     const id = request.params.id
-
-        const existe = await sql.query('SELECT * FROM usuario WHERE id = $1', [id])
+    
+    const existe = await sql.query('SELECT * FROM usuario WHERE id = $1', [id])
     if (existe.rows.length === 0) {
         reply.status(400).send({ error : 'Usuario Não Existe no Banco!'})
     }
-
+    
     const resultado = await sql.query('DELETE FROM usuario WHERE id = $1', [id])
     reply.status(204)
-
+    
 })
-
-
-
 servidor.post('/login', async (request, reply) => {
     const email = request.body.email;
     const senha = request.body.senha;
     if (!email || !senha) {
-        reply.status(400).send({ error : 'Email ou senha Invalidos!'})
+      return reply.status(400).send({ error : 'Email ou senha Invalidos!'})
     }
     const resultado = await sql.query('SELECT * FROM usuario WHERE email = $1 AND senha = $2', [email, senha])
     if (resultado.rows.length === 0) {
@@ -74,6 +74,9 @@ servidor.post('/login', async (request, reply) => {
         reply.send({ message : 'Login realizado com sucesso!' })
     }
 })
+
+
+
 
 
 servidor.listen({port: 3000})
